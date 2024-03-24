@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelisaVizeGp", "MelisaVizeGp\MelisaVizeGp.csproj", "{AA27202E-11B1-4417-AD9E-A1C287C22BCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA27202E-11B1-4417-AD9E-A1C287C22BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA27202E-11B1-4417-AD9E-A1C287C22BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA27202E-11B1-4417-AD9E-A1C287C22BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA27202E-11B1-4417-AD9E-A1C287C22BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C1934C5-01FA-4DA1-B668-1AE2BC4D69A5}
+	EndGlobalSection
+EndGlobal
