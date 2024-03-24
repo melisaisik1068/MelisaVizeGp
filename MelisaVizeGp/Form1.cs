@@ -34,5 +34,10 @@ namespace MelisaVizeGp
             emanetislemleri emanetislemleri = new emanetislemleri();
             emanetislemleri.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
