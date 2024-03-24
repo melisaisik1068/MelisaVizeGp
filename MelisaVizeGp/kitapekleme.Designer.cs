@@ -34,7 +34,6 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
@@ -45,17 +44,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(333, 76);
+            label1.Location = new Point(332, 72);
             label1.Name = "label1";
-            label1.Size = new Size(96, 20);
+            label1.Size = new Size(140, 20);
             label1.TabIndex = 0;
-            label1.Text = "Kitap Ekleme";
-            label1.Click += label1_Click;
+            label1.Text = "Kitap Ekleme Ekranı";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(60, 144);
+            label2.Location = new Point(54, 147);
             label2.Name = "label2";
             label2.Size = new Size(83, 20);
             label2.TabIndex = 1;
@@ -64,82 +62,73 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(60, 187);
+            label3.Location = new Point(54, 195);
             label3.Name = "label3";
-            label3.Size = new Size(48, 20);
+            label3.Size = new Size(99, 20);
             label3.TabIndex = 2;
-            label3.Text = "Yazarı";
+            label3.Text = "Kitabın Yazarı";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(60, 310);
+            label4.Location = new Point(54, 244);
             label4.Name = "label4";
-            label4.Size = new Size(80, 20);
+            label4.Size = new Size(89, 20);
             label4.TabIndex = 3;
-            label4.Text = "Barkod No";
-            label4.Click += label4_Click;
+            label4.Text = "Kitabın Türü";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(582, 128);
+            label5.Location = new Point(54, 293);
             label5.Name = "label5";
-            label5.Size = new Size(0, 20);
+            label5.Size = new Size(113, 20);
             label5.TabIndex = 4;
+            label5.Text = "Kitabın Yayınevi";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(58, 272);
+            label6.Location = new Point(54, 335);
             label6.Name = "label6";
-            label6.Size = new Size(62, 20);
+            label6.Size = new Size(97, 20);
             label6.TabIndex = 5;
-            label6.Text = "Yayınevi";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(60, 232);
-            label7.Name = "label7";
-            label7.Size = new Size(38, 20);
-            label7.TabIndex = 6;
-            label7.Text = "Türü";
+            label6.Text = "Demirbaş No";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(237, 138);
+            textBox1.Location = new Point(241, 140);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(374, 27);
-            textBox1.TabIndex = 7;
+            textBox1.Size = new Size(463, 27);
+            textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(237, 180);
+            textBox2.Location = new Point(241, 188);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(374, 27);
-            textBox2.TabIndex = 8;
+            textBox2.Size = new Size(463, 27);
+            textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(237, 307);
+            textBox3.Location = new Point(241, 237);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(374, 27);
-            textBox3.TabIndex = 9;
+            textBox3.Size = new Size(463, 27);
+            textBox3.TabIndex = 8;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(237, 225);
+            textBox4.Location = new Point(241, 328);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(374, 27);
-            textBox4.TabIndex = 10;
+            textBox4.Size = new Size(463, 27);
+            textBox4.TabIndex = 9;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(237, 269);
+            textBox5.Location = new Point(241, 286);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(374, 27);
-            textBox5.TabIndex = 11;
+            textBox5.Size = new Size(463, 27);
+            textBox5.TabIndex = 10;
             // 
             // kitapekleme
             // 
@@ -151,7 +140,6 @@
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -172,7 +160,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;
