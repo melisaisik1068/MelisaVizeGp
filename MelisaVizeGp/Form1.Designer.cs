@@ -72,6 +72,15 @@
             label1.TabIndex = 3;
             label1.Text = "Kütüphane Kitap Takip Sistemi";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(305, 87);
+            label1.Name = "label1";
+            label1.Size = new Size(209, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Kütüphane Kitap Takip Sistemi";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);

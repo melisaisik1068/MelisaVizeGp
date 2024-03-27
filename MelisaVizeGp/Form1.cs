@@ -28,5 +28,14 @@ namespace MelisaVizeGp
             kitapekleme kitapekleme = new kitapekleme();
             kitapekleme.Show();
         }
+<<<<<<< HEAD
+=======
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            emanetislemleri emanetislemleri = new emanetislemleri();
+            emanetislemleri.Show();
+        }
+>>>>>>> dosya ya yazma işlemi tamamlandı
     }
 }
