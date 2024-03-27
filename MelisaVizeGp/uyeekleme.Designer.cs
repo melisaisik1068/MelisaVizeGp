@@ -45,7 +45,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(361, 63);
+            label1.Location = new Point(355, 94);
             label1.Name = "label1";
             label1.Size = new Size(130, 20);
             label1.TabIndex = 0;
@@ -54,89 +54,88 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(44, 129);
+            label2.Location = new Point(66, 166);
             label2.Name = "label2";
-            label2.Size = new Size(32, 20);
+            label2.Size = new Size(81, 20);
             label2.TabIndex = 1;
-            label2.Text = "Adı";
+            label2.Text = "Üyenin Adı";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(44, 236);
+            label3.Location = new Point(66, 209);
             label3.Name = "label3";
-            label3.Size = new Size(141, 20);
+            label3.Size = new Size(103, 20);
             label3.TabIndex = 2;
-            label3.Text = "T.C Kimlik Numarası";
+            label3.Text = "Üyenin Soyadı";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(44, 181);
+            label4.Location = new Point(66, 256);
             label4.Name = "label4";
-            label4.Size = new Size(54, 20);
+            label4.Size = new Size(194, 20);
             label4.TabIndex = 3;
-            label4.Text = "Soyadı";
+            label4.Text = "Üyenin T.C Kimlik Numarası ";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(44, 284);
+            label5.Location = new Point(66, 301);
             label5.Name = "label5";
-            label5.Size = new Size(96, 20);
+            label5.Size = new Size(145, 20);
             label5.TabIndex = 4;
-            label5.Text = "Cep Telefonu";
+            label5.Text = "Üyenin Cep Telefonu";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(44, 333);
+            label6.Location = new Point(66, 348);
             label6.Name = "label6";
-            label6.Size = new Size(88, 20);
+            label6.Size = new Size(130, 20);
             label6.TabIndex = 5;
-            label6.Text = "Üyelik Tarihi";
+            label6.Text = "Üyenin Kayıt Tarihi";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(284, 122);
+            textBox1.Location = new Point(266, 159);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(372, 27);
+            textBox1.Size = new Size(379, 27);
             textBox1.TabIndex = 6;
-            
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(284, 174);
+            textBox2.Location = new Point(266, 202);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(372, 27);
+            textBox2.Size = new Size(379, 27);
             textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(284, 233);
+            textBox3.Location = new Point(266, 256);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(372, 27);
+            textBox3.Size = new Size(379, 27);
             textBox3.TabIndex = 8;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(284, 281);
+            textBox4.Location = new Point(266, 301);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(372, 27);
+            textBox4.Size = new Size(379, 27);
             textBox4.TabIndex = 9;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(284, 326);
+            textBox5.Location = new Point(266, 341);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(372, 27);
+            textBox5.Size = new Size(379, 27);
             textBox5.TabIndex = 10;
             // 
             // button1
             // 
-            button1.Location = new Point(404, 380);
+            button1.Location = new Point(381, 381);
             button1.Name = "button1";
-            button1.Size = new Size(117, 41);
+            button1.Size = new Size(135, 29);
             button1.TabIndex = 11;
             button1.Text = "Kaydet";
             button1.UseVisualStyleBackColor = true;

@@ -39,12 +39,13 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             textBox5 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(332, 72);
+            label1.Location = new Point(325, 48);
             label1.Name = "label1";
             label1.Size = new Size(140, 20);
             label1.TabIndex = 0;
@@ -53,7 +54,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(54, 147);
+            label2.Location = new Point(71, 111);
             label2.Name = "label2";
             label2.Size = new Size(83, 20);
             label2.TabIndex = 1;
@@ -62,7 +63,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(54, 195);
+            label3.Location = new Point(71, 175);
             label3.Name = "label3";
             label3.Size = new Size(99, 20);
             label3.TabIndex = 2;
@@ -71,70 +72,86 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(54, 244);
+            label4.Location = new Point(71, 240);
             label4.Name = "label4";
-            label4.Size = new Size(89, 20);
+            label4.Size = new Size(113, 20);
             label4.TabIndex = 3;
-            label4.Text = "Kitabın Türü";
+            label4.Text = "Kitabın Yayınevi";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(54, 293);
+            label5.Location = new Point(71, 302);
             label5.Name = "label5";
-            label5.Size = new Size(113, 20);
+            label5.Size = new Size(89, 20);
             label5.TabIndex = 4;
-            label5.Text = "Kitabın Yayınevi";
+            label5.Text = "Kitabın Türü";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(54, 335);
+            label6.Location = new Point(71, 360);
             label6.Name = "label6";
-            label6.Size = new Size(97, 20);
+            label6.Size = new Size(152, 20);
             label6.TabIndex = 5;
-            label6.Text = "Demirbaş No";
+            label6.Text = "Kitabın Seri Numarası";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(241, 140);
+            textBox1.ForeColor = SystemColors.WindowText;
+            textBox1.Location = new Point(252, 104);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(463, 27);
+            textBox1.Size = new Size(409, 27);
             textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(241, 188);
+            textBox2.ForeColor = SystemColors.WindowText;
+            textBox2.Location = new Point(252, 168);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(463, 27);
+            textBox2.Size = new Size(409, 27);
             textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(241, 237);
+            textBox3.ForeColor = SystemColors.WindowText;
+            textBox3.Location = new Point(252, 233);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(463, 27);
+            textBox3.Size = new Size(409, 27);
             textBox3.TabIndex = 8;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(241, 328);
+            textBox4.ForeColor = SystemColors.WindowText;
+            textBox4.Location = new Point(252, 295);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(463, 27);
-            textBox4.TabIndex = 9;
+            textBox4.Size = new Size(409, 27);
+            textBox4.TabIndex = 8;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(241, 286);
+            textBox5.ForeColor = SystemColors.WindowText;
+            textBox5.Location = new Point(252, 353);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(463, 27);
-            textBox5.TabIndex = 10;
+            textBox5.Size = new Size(409, 27);
+            textBox5.TabIndex = 9;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(360, 400);
+            button1.Name = "button1";
+            button1.Size = new Size(145, 29);
+            button1.TabIndex = 10;
+            button1.Text = "Kaydet";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // kitapekleme
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(textBox5);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -148,7 +165,6 @@
             Controls.Add(label1);
             Name = "kitapekleme";
             Text = "kitapekleme";
-            
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,5 +182,6 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private TextBox textBox5;
+        private Button button1;
     }
 }

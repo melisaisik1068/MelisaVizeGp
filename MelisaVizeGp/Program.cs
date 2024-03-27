@@ -13,7 +13,7 @@ namespace MelisaVizeGp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new uyeekleme());
+            Application.Run(new Form1());
         }
     }
 }

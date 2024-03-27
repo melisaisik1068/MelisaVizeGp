@@ -17,27 +17,16 @@ namespace MelisaVizeGp
             InitializeComponent();
         }
 
-        public void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             uyeekleme uyeekleme = new uyeekleme();
             uyeekleme.Show();
         }
 
-        public void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             kitapekleme kitapekleme = new kitapekleme();
             kitapekleme.Show();
-        }
-
-        public void button3_Click(object sender, EventArgs e)
-        {
-            emanetislemleri emanetislemleri = new emanetislemleri();
-            emanetislemleri.Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
