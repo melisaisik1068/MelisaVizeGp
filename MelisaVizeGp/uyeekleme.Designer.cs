@@ -39,6 +39,7 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             textBox5 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -101,6 +102,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(372, 27);
             textBox1.TabIndex = 6;
+            
             // 
             // textBox2
             // 
@@ -130,11 +132,22 @@
             textBox5.Size = new Size(372, 27);
             textBox5.TabIndex = 10;
             // 
+            // button1
+            // 
+            button1.Location = new Point(404, 380);
+            button1.Name = "button1";
+            button1.Size = new Size(117, 41);
+            button1.TabIndex = 11;
+            button1.Text = "Kaydet";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // uyeekleme
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(textBox5);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -165,5 +178,6 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private TextBox textBox5;
+        private Button button1;
     }
 }

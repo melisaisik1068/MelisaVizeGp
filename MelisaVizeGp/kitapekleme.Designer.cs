@@ -148,6 +148,7 @@
             Controls.Add(label1);
             Name = "kitapekleme";
             Text = "kitapekleme";
+            
             ResumeLayout(false);
             PerformLayout();
         }
