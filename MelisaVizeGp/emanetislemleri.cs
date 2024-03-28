@@ -62,23 +62,22 @@ namespace emanetislemleri
 
         private void Sil(string uyeAdiSoyadi, string kitapBilgileri)
         {
-            // JSON dosyasının yolunu belirle
+            
             string dosyaYolu = @"C:\Users\melis\OneDrive\Masaüstü\emanetislemleri.json";
 
-            // JSON dosyasını oku
+         
             List<Emanet> emanetler = new List<Emanet>();
             if (File.Exists(dosyaYolu))
             {
                 emanetler = JsonConvert.DeserializeObject<List<Emanet>>(File.ReadAllText(dosyaYolu));
             }
 
-            // Silinecek emaneti bul
+          
             Emanet silinecekEmanet = emanetler.Find(x => x.UyeAdiSoyadi == uyeAdiSoyadi && x.KitapBilgileri == kitapBilgileri);
 
-            // Emaneti listeden sil
+           
             emanetler.Remove(silinecekEmanet);
 
-            // JSON dosyasına kaydet
             File.WriteAllText(dosyaYolu, JsonConvert.SerializeObject(emanetler));
         }
     }
