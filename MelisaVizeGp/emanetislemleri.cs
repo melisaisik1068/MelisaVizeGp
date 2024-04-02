@@ -9,24 +9,23 @@ namespace emanetislemleri
 {
     public partial class emanetislemleri : Form
     {
+        private List<Emanet> emanetler;
+
         public emanetislemleri()
         {
             InitializeComponent();
+            emanetler = new List<Emanet>();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
             string uyeAdiSoyadi = textBox1.Text;
             string kitapBilgileri = textBox2.Text;
 
-            
             Emanet emanet = new Emanet(uyeAdiSoyadi, kitapBilgileri);
 
-           
             Kaydet(emanet);
 
-           
             MessageBox.Show("Emanet işlemi başarıyla gerçekleşti!");
         }
 
@@ -35,7 +34,6 @@ namespace emanetislemleri
             string uyeAdiSoyadi = textBox1.Text;
             string kitapBilgileri = textBox2.Text;
 
-            
             Sil(uyeAdiSoyadi, kitapBilgileri);
 
             MessageBox.Show("Emanet işlemi başarıyla silindi!");
@@ -43,39 +41,29 @@ namespace emanetislemleri
 
         private void Kaydet(Emanet emanet)
         {
-         
             string dosyaYolu = @"C:\Users\melis\OneDrive\Masaüstü\emanetislemleri.json";
 
-            
-            List<Emanet> emanetler = new List<Emanet>();
             if (File.Exists(dosyaYolu))
             {
                 emanetler = JsonConvert.DeserializeObject<List<Emanet>>(File.ReadAllText(dosyaYolu));
             }
 
-          
             emanetler.Add(emanet);
 
-          
             File.WriteAllText(dosyaYolu, JsonConvert.SerializeObject(emanetler));
         }
 
         private void Sil(string uyeAdiSoyadi, string kitapBilgileri)
         {
-            
             string dosyaYolu = @"C:\Users\melis\OneDrive\Masaüstü\emanetislemleri.json";
 
-         
-            List<Emanet> emanetler = new List<Emanet>();
             if (File.Exists(dosyaYolu))
             {
                 emanetler = JsonConvert.DeserializeObject<List<Emanet>>(File.ReadAllText(dosyaYolu));
             }
 
-          
             Emanet silinecekEmanet = emanetler.Find(x => x.UyeAdiSoyadi == uyeAdiSoyadi && x.KitapBilgileri == kitapBilgileri);
 
-           
             emanetler.Remove(silinecekEmanet);
 
             File.WriteAllText(dosyaYolu, JsonConvert.SerializeObject(emanetler));

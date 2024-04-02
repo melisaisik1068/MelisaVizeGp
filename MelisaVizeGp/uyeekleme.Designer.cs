@@ -40,6 +40,8 @@
             textBox4 = new TextBox();
             textBox5 = new TextBox();
             button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -133,7 +135,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(381, 381);
+            button1.Location = new Point(256, 389);
             button1.Name = "button1";
             button1.Size = new Size(135, 29);
             button1.TabIndex = 11;
@@ -141,11 +143,33 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(397, 389);
+            button2.Name = "button2";
+            button2.Size = new Size(135, 29);
+            button2.TabIndex = 12;
+            button2.Text = "Sil";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(538, 389);
+            button3.Name = "button3";
+            button3.Size = new Size(135, 29);
+            button3.TabIndex = 13;
+            button3.Text = "Güncelle";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // uyeekleme
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox5);
             Controls.Add(textBox4);
@@ -178,5 +202,7 @@
         private TextBox textBox4;
         private TextBox textBox5;
         private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
