@@ -1,47 +1,30 @@
-﻿using Kitaplar;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json;
+using System.Data.SQLite;
 
 namespace MelisaVizeGp
 {
     public partial class kitapekleme : Form
     {
         private List<Kitap> kitaplar;
+        private string dosyaYolu = "kitaplar.db";
 
         public kitapekleme()
         {
             InitializeComponent();
             kitaplar = new List<Kitap>();
 
-            string dosyaYolu = "C:\\Users\\melis\\OneDrive\\Masaüstü\\kitaplar.json";
-            if (File.Exists(dosyaYolu))
-            {
-                string json = File.ReadAllText(dosyaYolu);
-                kitaplar = JsonConvert.DeserializeObject<List<Kitap>>(json);
-            }
+            SQLiteConnection.CreateFile(dosyaYolu);
+
+            VeritabanindanKitaplariYukle();
 
             Listele();
         }
 
         private void Listele()
         {
-            
             listBox1.Items.Clear();
 
             foreach (var kitap in kitaplar)
@@ -52,7 +35,6 @@ namespace MelisaVizeGp
 
         private void Button1_Click(object sender, EventArgs e)
         {
-          
             if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox5.Text))
             {
                 MessageBox.Show("Lütfen tüm bilgileri giriniz!");
@@ -70,14 +52,11 @@ namespace MelisaVizeGp
 
             kitaplar.Add(kitap);
 
-          
-            string json = JsonConvert.SerializeObject(kitaplar);
-            string dosyaYolu = "C:\\Users\\melis\\OneDrive\\Masaüstü\\kitaplar.json";
-            File.WriteAllText(dosyaYolu, json, Encoding.UTF8);
+            KitapVeritabaninaEkle(kitap);
 
             MessageBox.Show("Kayıt işlemi başarıyla tamamlandı!");
             Temizle();
-            Listele(); 
+            Listele();
         }
 
         private void Temizle()
@@ -89,84 +68,60 @@ namespace MelisaVizeGp
             textBox5.Clear();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void VeritabanindanKitaplariYukle()
         {
-            if (listBox1.SelectedIndex != -1)
+            using (SQLiteConnection baglanti = new SQLiteConnection($"Data Source={dosyaYolu};Version=3;"))
             {
-                kitaplar.RemoveAt(listBox1.SelectedIndex);
+                baglanti.Open();
 
-                
-                string json = JsonConvert.SerializeObject(kitaplar);
-                string dosyaYolu = "C:\\Users\\melis\\OneDrive\\Masaüstü\\kitaplar.json";
-                File.WriteAllText(dosyaYolu, json, Encoding.UTF8);
+                string sorgu = "SELECT * FROM Kitaplar";
+                SQLiteCommand komut = new SQLiteCommand(sorgu, baglanti);
+                SQLiteDataReader okuyucu = komut.ExecuteReader();
 
-                MessageBox.Show("Silme işlemi başarıyla tamamlandı!");
-                Listele(); 
-            }
-            else
-            {
-                MessageBox.Show("Lütfen bir kitap seçiniz!");
-            }
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndex != -1)
-            {
-                Kitap secilenKitap = kitaplar[listBox1.SelectedIndex];
-
-                
-                textBox1.Text = secilenKitap.Ad;
-                textBox2.Text = secilenKitap.Yazar;
-                textBox3.Text = secilenKitap.Yayinevi;
-                textBox4.Text = secilenKitap.Tur;
-                textBox5.Text = secilenKitap.DemirbasNumarasi;
-
-                
-                kitaplar.RemoveAt(listBox1.SelectedIndex);
-
-              
-                string json = JsonConvert.SerializeObject(kitaplar);
-                string dosyaYolu = "C:\\Users\\melis\\OneDrive\\Masaüstü\\kitaplar.json";
-                File.WriteAllText(dosyaYolu, json, Encoding.UTF8);
-
-                MessageBox.Show("Düzenleme moduna geçtiniz. Lütfen bilgileri güncelleyiniz ve Kaydet butonuna basınız.");
-            }
-            else
-            {
-                MessageBox.Show("Lütfen bir kitap seçiniz!");
-            }
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            
-            if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrEmpty(textBox3.Text) && !string.IsNullOrEmpty(textBox4.Text) && !string.IsNullOrEmpty(textBox5.Text))
-            {
-                Kitap kitap = new Kitap()
+                while (okuyucu.Read())
                 {
-                    Ad = textBox1.Text,
-                    Yazar = textBox2.Text,
-                    Yayinevi = textBox3.Text,
-                    Tur = textBox4.Text,
-                    DemirbasNumarasi = textBox5.Text
-                };
+                    Kitap kitap = new Kitap()
+                    {
+                        Ad = okuyucu["Ad"].ToString(),
+                        Yazar = okuyucu["Yazar"].ToString(),
+                        Yayinevi = okuyucu["Yayinevi"].ToString(),
+                        Tur = okuyucu["Tur"].ToString(),
+                        DemirbasNumarasi = okuyucu["DemirbasNumarasi"].ToString()
+                    };
+                    kitaplar.Add(kitap);
+                }
 
-                kitaplar.Add(kitap);
-
-                
-                string json = JsonConvert.SerializeObject(kitaplar);
-                string dosyaYolu = "C:\\Users\\melis\\OneDrive\\Masaüstü\\kitaplar.json";
-                File.WriteAllText(dosyaYolu, json, Encoding.UTF8);
-
-                MessageBox.Show("Güncelleme işlemi başarıyla tamamlandı!");
-                Temizle();
-                Listele(); 
-            }
-            else
-            {
-                MessageBox.Show("Lütfen tüm bilgileri giriniz!");
+                baglanti.Close();
             }
         }
+
+        private void KitapVeritabaninaEkle(Kitap kitap)
+        {
+            using (SQLiteConnection baglanti = new SQLiteConnection($"Data Source={dosyaYolu};Version=3;"))
+            {
+                baglanti.Open();
+
+                string sorgu = "INSERT INTO Kitaplar (Ad, Yazar, Yayinevi, Tur, DemirbasNumarasi) VALUES (@Ad, @Yazar, @Yayinevi, @Tur, @DemirbasNumarasi)";
+                SQLiteCommand komut = new SQLiteCommand(sorgu, baglanti);
+                komut.Parameters.AddWithValue("@Ad", kitap.Ad);
+                komut.Parameters.AddWithValue("@Yazar", kitap.Yazar);
+                komut.Parameters.AddWithValue("@Yayinevi", kitap.Yayinevi);
+                komut.Parameters.AddWithValue("@Tur", kitap.Tur);
+                komut.Parameters.AddWithValue("@DemirbasNumarasi", kitap.DemirbasNumarasi);
+
+                komut.ExecuteNonQuery();
+
+                baglanti.Close();
+            }
+        }
+    }
+
+    public class Kitap
+    {
+        public string Ad { get; set; }
+        public string Yazar { get; set; }
+        public string Yayinevi { get; set; }
+        public string Tur { get; set; }
+        public string DemirbasNumarasi { get; set; }
     }
 }
