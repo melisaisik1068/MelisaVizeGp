@@ -2,112 +2,74 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using System.Data.SQLite;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace MelisaVizeGp
+namespace emanetislemleri
 {
-    public partial class kitapekleme : Form
+    public partial class emanetislemleri : Form
     {
-        private List<Kitap> kitaplar;
-        private string dosyaYolu = "kitaplar.db";
+        private List<Emanet> emanetler;
+        private string dosyaYolu = @"C:\Users\melis\OneDrive\Masaüstü\emanetislemleri.db";
 
-        public kitapekleme()
+        public emanetislemleri()
         {
             InitializeComponent();
-            kitaplar = new List<Kitap>();
+            emanetler = new List<Emanet>();
 
             SQLiteConnection.CreateFile(dosyaYolu);
-
-            VeritabanindanKitaplariYukle();
-
-            Listele();
         }
 
-        private void Listele()
+        private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            string uyeAdiSoyadi = textBox1.Text;
+            string kitapBilgileri = textBox2.Text;
 
-            foreach (var kitap in kitaplar)
-            {
-                listBox1.Items.Add($"{kitap.Ad} - {kitap.Yazar} - {kitap.Yayinevi} - {kitap.Tur} - {kitap.DemirbasNumarasi}");
-            }
+            Emanet emanet = new Emanet(uyeAdiSoyadi, kitapBilgileri);
+
+            Kaydet(emanet);
+
+            MessageBox.Show("Emanet işlemi başarıyla gerçekleşti!");
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox5.Text))
-            {
-                MessageBox.Show("Lütfen tüm bilgileri giriniz!");
-                return;
-            }
+            string uyeAdiSoyadi = textBox1.Text;
+            string kitapBilgileri = textBox2.Text;
 
-            Kitap kitap = new Kitap()
-            {
-                Ad = textBox1.Text,
-                Yazar = textBox2.Text,
-                Yayinevi = textBox3.Text,
-                Tur = textBox4.Text,
-                DemirbasNumarasi = textBox5.Text
-            };
+            Sil(uyeAdiSoyadi, kitapBilgileri);
 
-            kitaplar.Add(kitap);
-
-            KitapVeritabaninaEkle(kitap);
-
-            MessageBox.Show("Kayıt işlemi başarıyla tamamlandı!");
-            Temizle();
-            Listele();
+            MessageBox.Show("Emanet işlemi başarıyla silindi!");
         }
 
-        private void Temizle()
-        {
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            textBox5.Clear();
-        }
-
-        private void VeritabanindanKitaplariYukle()
+        private void Kaydet(Emanet emanet)
         {
             using (SQLiteConnection baglanti = new SQLiteConnection($"Data Source={dosyaYolu};Version=3;"))
             {
                 baglanti.Open();
 
-                string sorgu = "SELECT * FROM Kitaplar";
+                string sorgu = "INSERT INTO Emanetler (UyeAdiSoyadi, KitapBilgileri) VALUES (@UyeAdiSoyadi, @KitapBilgileri)";
                 SQLiteCommand komut = new SQLiteCommand(sorgu, baglanti);
-                SQLiteDataReader okuyucu = komut.ExecuteReader();
+                komut.Parameters.AddWithValue("@UyeAdiSoyadi", emanet.UyeAdiSoyadi);
+                komut.Parameters.AddWithValue("@KitapBilgileri", emanet.KitapBilgileri);
 
-                while (okuyucu.Read())
-                {
-                    Kitap kitap = new Kitap()
-                    {
-                        Ad = okuyucu["Ad"].ToString(),
-                        Yazar = okuyucu["Yazar"].ToString(),
-                        Yayinevi = okuyucu["Yayinevi"].ToString(),
-                        Tur = okuyucu["Tur"].ToString(),
-                        DemirbasNumarasi = okuyucu["DemirbasNumarasi"].ToString()
-                    };
-                    kitaplar.Add(kitap);
-                }
+                komut.ExecuteNonQuery();
 
                 baglanti.Close();
             }
         }
 
-        private void KitapVeritabaninaEkle(Kitap kitap)
+        private void Sil(string uyeAdiSoyadi, string kitapBilgileri)
         {
             using (SQLiteConnection baglanti = new SQLiteConnection($"Data Source={dosyaYolu};Version=3;"))
             {
                 baglanti.Open();
 
-                string sorgu = "INSERT INTO Kitaplar (Ad, Yazar, Yayinevi, Tur, DemirbasNumarasi) VALUES (@Ad, @Yazar, @Yayinevi, @Tur, @DemirbasNumarasi)";
+                string sorgu = "DELETE FROM Emanetler WHERE UyeAdiSoyadi=@UyeAdiSoyadi AND KitapBilgileri=@KitapBilgileri";
                 SQLiteCommand komut = new SQLiteCommand(sorgu, baglanti);
-                komut.Parameters.AddWithValue("@Ad", kitap.Ad);
-                komut.Parameters.AddWithValue("@Yazar", kitap.Yazar);
-                komut.Parameters.AddWithValue("@Yayinevi", kitap.Yayinevi);
-                komut.Parameters.AddWithValue("@Tur", kitap.Tur);
-                komut.Parameters.AddWithValue("@DemirbasNumarasi", kitap.DemirbasNumarasi);
+                komut.Parameters.AddWithValue("@UyeAdiSoyadi", uyeAdiSoyadi);
+                komut.Parameters.AddWithValue("@KitapBilgileri", kitapBilgileri);
 
                 komut.ExecuteNonQuery();
 
@@ -116,12 +78,15 @@ namespace MelisaVizeGp
         }
     }
 
-    public class Kitap
+    public class Emanet
     {
-        public string Ad { get; set; }
-        public string Yazar { get; set; }
-        public string Yayinevi { get; set; }
-        public string Tur { get; set; }
-        public string DemirbasNumarasi { get; set; }
+        public string UyeAdiSoyadi { get; set; }
+        public string KitapBilgileri { get; set; }
+
+        public Emanet(string uyeAdiSoyadi, string kitapBilgileri)
+        {
+            UyeAdiSoyadi = uyeAdiSoyadi;
+            KitapBilgileri = kitapBilgileri;
+        }
     }
 }
